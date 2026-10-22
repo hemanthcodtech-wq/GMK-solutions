@@ -1,0 +1,100 @@
+:root {
+  --font-primary: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  /* Brand Palette requested */
+  --color-primary-teal: #087F86;
+  --color-accent-cyan: #00C9D8;
+  --color-accent-emerald: #25C878;
+  --color-bg-midnight: #071827;
+  --color-bg-dark: #040f1a;
+  --color-bg-light: #F7FAFC;
+  
+  --color-cyan-glow: #00C9D8;
+  --color-teal: #087F86;
+  --color-green-emerald: #25C878;
+  --color-accent-blue: #0ea5e9;
+  
+  --color-card-bg: rgba(7, 24, 39, 0.75);
+  --color-card-border: rgba(0, 201, 216, 0.25);
+  --color-text-main: #f0fdfa;
+  --color-text-muted: #94a3b8;
+  --color-text-dim: #64748b;
+  
+  --glass-bg: rgba(7, 24, 39, 0.7);
+  --glass-border: rgba(0, 201, 216, 0.22);
+  --glass-glow: 0 0 25px rgba(0, 201, 216, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reduced Motion Preference Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #03080e;
+}
+::-webkit-scrollbar-thumb {
+  background: #004d57;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #008796;
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 50%, #4ade80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, #22d3ee 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

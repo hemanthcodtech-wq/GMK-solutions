@@ -1,0 +1,130 @@
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at center, #072238 0%, #041422 60%, #020a12 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.splash-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pulsing signal rings */
+.signal-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 201, 216, 0.4);
+  box-shadow: 0 0 20px rgba(0, 201, 216, 0.2);
+  pointer-events: none;
+}
+
+.ring-1 {
+  width: 140px;
+  height: 140px;
+}
+
+.ring-2 {
+  width: 220px;
+  height: 220px;
+}
+
+.ring-3 {
+  width: 320px;
+  height: 320px;
+}
+
+/* Splash Logo Container */
+.splash-logo-box {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 201, 216, 0.3) 0%, rgba(7, 24, 39, 0.95) 70%);
+  border: 2px solid #00C9D8;
+  box-shadow: 0 0 35px rgba(0, 201, 216, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.splash-logo-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+/* Light sweep shine */
+.splash-light-sweep {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Brand Text reveal */
+.splash-brand {
+  margin-top: 1.8rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.splash-brand-title {
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #00C9D8 0%, #25C878 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.2rem;
+}
+
+.splash-brand-subtitle {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Connecting network line */
+.splash-network-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 201, 216, 0.6) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}

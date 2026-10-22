@@ -1,0 +1,62 @@
+.network-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.network-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.net-line {
+  stroke: rgba(0, 201, 216, 0.12);
+  stroke-width: 1;
+  stroke-dasharray: 4, 8;
+  animation: netLinePulse 8s infinite alternate ease-in-out;
+}
+
+.net-node {
+  fill: #00C9D8;
+  opacity: 0.35;
+  filter: drop-shadow(0 0 4px rgba(0, 201, 216, 0.6));
+  animation: netNodeGlow 4s infinite alternate ease-in-out;
+}
+
+.net-node-emerald {
+  fill: #25C878;
+  opacity: 0.35;
+  filter: drop-shadow(0 0 4px rgba(37, 200, 120, 0.6));
+  animation: netNodeGlow 5s infinite alternate ease-in-out 1s;
+}
+
+@keyframes netLinePulse {
+  0% {
+    stroke: rgba(0, 201, 216, 0.08);
+  }
+  100% {
+    stroke: rgba(0, 201, 216, 0.22);
+  }
+}
+
+@keyframes netNodeGlow {
+  0% {
+    opacity: 0.25;
+    r: 3;
+  }
+  100% {
+    opacity: 0.65;
+    r: 4.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .network-bg-canvas {
+    opacity: 0.25;
+  }
+}
