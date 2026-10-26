@@ -196,7 +196,22 @@ const Booking = () => {
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <a
-                  href={`https://wa.me/917032130328?text=Hello%20GMK,%20I%20have%20submitted%20booking%20request%20${bookingRef}%20for%20${encodeURIComponent(formData.service)}.%20Please%20confirm.`}
+                  href={`https://wa.me/917032130328?text=${encodeURIComponent(
+                    `*GMK Booking Request Confirmation*\n` +
+                    `--------------------------------\n` +
+                    `*Reference ID:* ${bookingRef}\n` +
+                    `*Customer Name:* ${formData.fullName}\n` +
+                    `*Mobile Number:* ${formData.mobileNumber}\n` +
+                    (formData.emailAddress ? `*Email:* ${formData.emailAddress}\n` : '') +
+                    `*Selected Service:* ${formData.service}\n` +
+                    `*Service Type:* ${formData.serviceType}\n` +
+                    `*Preferred Date:* ${formData.preferredDate || 'Earliest available'}\n` +
+                    `*Preferred Time:* ${formData.preferredTime}\n` +
+                    `*Service Location:* ${formData.location}\n` +
+                    (formData.requirement ? `*Requirement Details:* ${formData.requirement}\n` : '') +
+                    `--------------------------------\n` +
+                    `Please confirm this booking schedule.`
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{

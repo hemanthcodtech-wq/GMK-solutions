@@ -54,6 +54,20 @@ const Contact = () => {
   const handleEnquirySubmit = (e) => {
     e.preventDefault();
     setFormSubmitted(true);
+
+    const waText = 
+      `*GMK Customer Enquiry*\n` +
+      `--------------------------------\n` +
+      `*Full Name:* ${formData.fullName}\n` +
+      `*Mobile Number:* ${formData.mobileNumber}\n` +
+      (formData.emailAddress ? `*Email Address:* ${formData.emailAddress}\n` : '') +
+      `*Enquiry Type:* ${formData.enquiryType}\n` +
+      `*Message / Requirement:* ${formData.message}\n` +
+      `--------------------------------\n` +
+      `Please get back to me with details and availability.`;
+
+    const waUrl = `https://wa.me/917032130328?text=${encodeURIComponent(waText)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
   };
 
   const toggleFaq = (index) => {
@@ -243,20 +257,39 @@ const Contact = () => {
                 <Sparkles size={48} color="#34d399" style={{ margin: '0 auto 1rem' }} />
                 <h3>Thank You, {formData.fullName}!</h3>
                 <p>
-                  Your enquiry for <strong>{formData.enquiryType}</strong> has been prepared. Our team will contact you at <strong>{formData.mobileNumber}</strong> shortly.
+                  Your enquiry for <strong>{formData.enquiryType}</strong> has been prepared and redirected to WhatsApp. If the WhatsApp window did not open, click the button below:
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                   <a
-                    href={`https://wa.me/917032130328?text=Hello%20GMK,%20I%20submitted%20an%20enquiry%20for%20${encodeURIComponent(formData.enquiryType)}`}
+                    href={`https://wa.me/917032130328?text=${encodeURIComponent(
+                      `*GMK Customer Enquiry*\n` +
+                      `--------------------------------\n` +
+                      `*Full Name:* ${formData.fullName}\n` +
+                      `*Mobile Number:* ${formData.mobileNumber}\n` +
+                      (formData.emailAddress ? `*Email Address:* ${formData.emailAddress}\n` : '') +
+                      `*Enquiry Type:* ${formData.enquiryType}\n` +
+                      `*Message / Requirement:* ${formData.message}\n` +
+                      `--------------------------------\n` +
+                      `Please get back to me with details and availability.`
+                    )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-whatsapp-chat"
                     style={{ margin: 0 }}
                   >
-                    <MessageSquare size={17} /> Fast-Track on WhatsApp
+                    <MessageSquare size={17} /> Open in WhatsApp
                   </a>
                   <button
-                    onClick={() => setFormSubmitted(false)}
+                    onClick={() => {
+                      setFormSubmitted(false);
+                      setFormData({
+                        fullName: '',
+                        mobileNumber: '',
+                        emailAddress: '',
+                        enquiryType: 'Networking & LAN Services',
+                        message: ''
+                      });
+                    }}
                     style={{
                       background: 'transparent',
                       border: '1px solid #00f0ff',
@@ -267,7 +300,7 @@ const Contact = () => {
                       cursor: 'pointer'
                     }}
                   >
-                    Send Another Enquiry
+                    Send Another Message
                   </button>
                 </div>
               </div>
@@ -344,15 +377,15 @@ const Contact = () => {
                 </div>
 
                 <div className="form-impl-note">
-                  <AlertCircle size={20} color="#38bdf8" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <MessageSquare size={20} color="#25d366" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <p>
-                    <strong>Review Enquiry:</strong> Website implementation note: connect this form to a secure backend or business email service before launch. This preview does not send your enquiry directly to an external server.
+                    <strong>Direct WhatsApp Dispatch:</strong> Submitting will instantly redirect to WhatsApp with your filled enquiry details so GMK technicians can assist you without delay.
                   </p>
                 </div>
 
                 <button type="submit" className="btn-submit-enquiry">
-                  <span>Review Enquiry</span>
-                  <Send size={18} />
+                  <span>Send Message via WhatsApp</span>
+                  <MessageSquare size={18} />
                 </button>
               </form>
             )}
@@ -426,7 +459,7 @@ const Contact = () => {
                 </p>
               </div>
               <a
-                href="https://maps.google.com/?q=Alipiri+Road+Tirupati+Andhra+Pradesh"
+                href="https://maps.google.com/?q=13.6375051,79.4084759"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gmaps"
@@ -439,9 +472,10 @@ const Contact = () => {
             <div className="map-iframe-wrapper">
               <iframe
                 title="GMK Network Solutions Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15509.704207914807!2d79.40356885!3d13.63189915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b18dfaeefb3%3A0xea89bb8c5a4db82b!2sAlipiri%20Rd%2C%20Tirupati%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3877.3328590490287!2d79.40847587508819!3d13.637505086742564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDM4JzE1LjAiTiA3OcKwMjQnMzkuOCJF!5e0!3m2!1sen!2sin!4v1793032297330!5m2!1sen!2sin"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen=""
               />
             </div>
           </div>

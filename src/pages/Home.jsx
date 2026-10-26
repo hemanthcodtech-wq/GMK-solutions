@@ -129,6 +129,21 @@ const Home = () => {
   const handleBookingSubmit = (e) => {
     e.preventDefault();
     setBookingSubmitted(true);
+
+    const waText =
+      `*GMK Service Booking Request*\n` +
+      `--------------------------------\n` +
+      `*Customer Name:* ${formData.name}\n` +
+      `*Mobile Number:* ${formData.phone}\n` +
+      `*Selected Service:* ${formData.service}\n` +
+      `*Service Location:* ${formData.location}\n` +
+      (formData.preferredDate ? `*Preferred Date:* ${formData.preferredDate}\n` : '') +
+      (formData.notes ? `*Requirement Details:* ${formData.notes}\n` : '') +
+      `--------------------------------\n` +
+      `Please confirm this service booking request.`;
+
+    const waUrl = `https://wa.me/917032130328?text=${encodeURIComponent(waText)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -494,6 +509,40 @@ const Home = () => {
                   <p>
                     Thank you, <strong>{formData.name}</strong>. Our team has received your service inquiry for <strong>{formData.service}</strong>. We will call you at <strong>{formData.phone}</strong> shortly.
                   </p>
+
+                  <a
+                    href={`https://wa.me/917032130328?text=${encodeURIComponent(
+                      `*GMK Booking Request Confirmation*\n` +
+                      `--------------------------------\n` +
+                      `*Customer Name:* ${formData.name}\n` +
+                      `*Mobile Number:* ${formData.phone}\n` +
+                      `*Selected Service:* ${formData.service}\n` +
+                      `*Service Location:* ${formData.location}\n` +
+                      (formData.preferredDate ? `*Preferred Date:* ${formData.preferredDate}\n` : '') +
+                      (formData.notes ? `*Requirement Details:* ${formData.notes}\n` : '') +
+                      `--------------------------------\n` +
+                      `Please confirm this service booking.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="action-pill whatsapp-pill"
+                    style={{
+                      marginTop: '0.4rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      background: '#25d366',
+                      color: '#ffffff',
+                      textDecoration: 'none',
+                      padding: '0.75rem 1.4rem',
+                      borderRadius: '9999px',
+                      fontWeight: 700
+                    }}
+                  >
+                    <MessageSquare size={17} />
+                    <span>Send Confirmation via WhatsApp</span>
+                  </a>
+
                   <button
                     className="submit-another-btn"
                     onClick={() => {
@@ -585,8 +634,8 @@ const Home = () => {
                   </div>
 
                   <button type="submit" className="booking-submit-btn">
-                    <span>Confirm Service Request</span>
-                    <Send size={16} />
+                    <span>Confirm & Book on WhatsApp</span>
+                    <MessageSquare size={17} />
                   </button>
                 </form>
               )}
@@ -670,7 +719,7 @@ const Home = () => {
 
               <div className="contact-buttons-row">
                 <a
-                  href="https://maps.google.com/?q=Alipiri+Road+Tirupati+Andhra+Pradesh"
+                  href="https://maps.google.com/?q=13.6375051,79.4084759"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="map-link-btn"
@@ -695,13 +744,13 @@ const Home = () => {
             <div className="map-embed-wrapper">
               <iframe
                 title="GMK Location Map - Alipiri Road, Tirupati"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15509.349079983944!2d79.4005!3d13.6330!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b1a457193f7%3A0x6b14ea9ea0f2d847!2sAlipiri%20Rd%2C%20Tirupati%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3877.3328590490287!2d79.40847587508819!3d13.637505086742564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDM4JzE1LjAiTiA3OcKwMjQnMzkuOCJF!5e0!3m2!1sen!2sin!4v1793032297330!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(1.15)' }}
                 allowFullScreen=""
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
               ></iframe>
             </div>
           </div>
