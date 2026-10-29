@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gmknetworks.com/sitemap.xml
+# Disallow build and private assets if any
+Disallow: /dist/
+
+# Sitemap location
+Sitemap: https://www.gmknetworksolutions.com/sitemap.xml
